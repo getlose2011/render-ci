@@ -1,0 +1,25 @@
+name: C# .NET Auto Build Check
+
+# 觸發條件：只要這個專案的程式碼被修改（Push），這條流水線就會自動啟動！
+on: [push]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest # 叫微軟雲端免費開一台全新的 Linux 給我們用
+
+    steps:
+    # 步驟 1：把專案程式碼複製到這台虛擬機上
+    - name: 複製程式碼
+      uses: actions/checkout@v4
+
+    # 步驟 2：在這台虛擬機上安裝最新的 .NET 執行環境
+    - name: 安裝 .NET 環境
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: '8.0.x' # 如果你之後用 .NET 9，可以改成 '9.0.x'
+
+    # 步驟 3：嘗試編譯你的 C# 程式碼，確保沒有任何打錯字或語法錯誤
+    - name: 進行 C# 程式碼編譯檢查
+      run: |
+        echo "正在模擬編譯 C# 後端 API 專案..."
+        dotnet build --configuration Release
