@@ -1,0 +1,6 @@
+@render_ci_HostAddress = http://localhost:5204
+
+GET {{render_ci_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
