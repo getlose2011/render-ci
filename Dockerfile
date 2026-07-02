@@ -1,4 +1,4 @@
-# 階段 1：使用微軟官方的 .NET SDK 進行程式碼編譯
+# 階段 1：使用微軟官方的 .NET 9 SDK 進行程式碼編譯
 FROM ://microsoft.com AS build-env
 WORKDIR /app
 
@@ -10,7 +10,7 @@ RUN dotnet restore
 COPY . ./
 RUN dotnet publish -c Release -o out
 
-# 階段 2：使用輕量級的 .NET 執行環境來跑你的網站
+# 階段 2：使用輕量級的 .NET 9 執行環境來跑你的網站
 FROM ://microsoft.com
 WORKDIR /app
 COPY --from=build-env /app/out .
@@ -19,5 +19,5 @@ COPY --from=build-env /app/out .
 ENV ASPNETCORE_URLS=http://+:8080
 EXPOSE 8080
 
-# 啟動 C# 程式碼（注意：下面的專案名稱要換成你真實的 .dll 檔名）
+# 啟動 C# 程式碼
 ENTRYPOINT ["dotnet", "render-ci.dll"]
