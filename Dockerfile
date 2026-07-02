@@ -1,4 +1,4 @@
-# 階段 1：使用微軟官方的 .NET 9 SDK 進行程式碼編譯
+# 階段 1：使用微軟官方的 .NET  9  SDK 進行程式碼編譯
 FROM ://microsoft.com AS build-env
 WORKDIR /app
 
