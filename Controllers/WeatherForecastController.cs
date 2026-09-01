@@ -55,6 +55,13 @@ namespace render_ci.Controllers
             _todoList.Add(newItem);
             return Ok(newItem);
         }
+
+        // 3. 兩數相加 (GET: /api/todo/add?a=1&b=2)
+        [HttpGet("add")]
+        public IActionResult Add([FromQuery] int a, [FromQuery] int b)
+        {
+            return Ok(new { result = a + b });
+        }
     }
 
     public class TodoItem
