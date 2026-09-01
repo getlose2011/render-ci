@@ -27,3 +27,7 @@ jobs:
       run: |
         echo "正在模擬編譯 C# 後端 API 專案..."
         dotnet build --configuration Release
+
+    # 步驟 4：執行單元測試，確保 add API 行為正確
+    - name: 執行單元測試
+      run: dotnet build && dotnet test --no-build --verbosity normal
