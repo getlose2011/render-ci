@@ -1,7 +1,11 @@
 name: C# .NET Auto Build Check
 
-# 觸發條件：只要這個專案的程式碼被修改（Push），這條流水線就會自動啟動！
-on: [push]
+# 觸發條件：Push 到 main 或對 main 發送 PR 時，這條流水線就會自動啟動！
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
 
 jobs:
   build-and-test:
