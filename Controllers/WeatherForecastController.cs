@@ -60,7 +60,7 @@ namespace render_ci.Controllers
         [HttpGet("add")]
         public IActionResult Add([FromQuery] int a, [FromQuery] int b)
         {
-            return Ok(new { result = a * b });
+            return Ok(new { result = a + b });
         }
     }
 
